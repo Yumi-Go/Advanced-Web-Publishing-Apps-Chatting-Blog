@@ -4,27 +4,6 @@
         <title>Chat</title>
     </head>
     <body>
-        <script>
-            function sendData() {
-                var querystring = "?";
-                if (document.getElementById("angry").checked || document.getElementById("angry").checked) {
-                    if (document.getElementById("angry").checked) {
-                        var emotion = "Angry";
-                    } else {
-                        var emotion = "Happy";
-                    }
-                    querystring += "emotion=" + escape(emotion);
-                    // querystring += "&";
-                }
-                location = "form.php" + querystring;
-            }
-            
-            window.addEventListener('load', function() {
-                document.getElementById("sender").addEventListener("click", sendData);
-            });
-        </script>
-
-
         <p>Add New Emoticon</p>
         <h1>Live Blog</h1>
         <!-- <p>Choose Emotion</p> -->
@@ -36,8 +15,8 @@
             <label for="happy">Happy</label>
             <br><br>
             <input type="text" name="send_textfield">
-            <input type="button" id="sender" value="Send">
+            <input type="button" id="sendButton" value="Send">
           </form>
-
+          <script src="script.js"></script>
     </body>
 </html>
