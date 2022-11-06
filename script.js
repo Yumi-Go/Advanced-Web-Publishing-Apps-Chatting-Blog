@@ -27,12 +27,8 @@ function showOutput() {
 	var xhr = new XMLHttpRequest(); 
    	xhr.open ("GET", request);
    	
-    // var emotion = document.getElementById("emotion").value;
     var description = document.getElementById("description").value;
-    // var message = "Emotion: " + emotion + description;
-
     var result = ""
-
     const emotionNodeList = document.getElementsByName('emotion');
 
    	xhr.onreadystatechange = function () {
