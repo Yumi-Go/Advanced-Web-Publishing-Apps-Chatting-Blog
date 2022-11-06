@@ -1,5 +1,7 @@
 function sendData() {
     var querystring = "?";
+
+
     if (document.getElementById("angry").checked || document.getElementById("happy").checked) {
         if (document.getElementById("angry").checked) {
             var emotion = "Angry";
@@ -9,6 +11,10 @@ function sendData() {
         querystring += "emotion=" + encodeURI(emotion);
         querystring += "&";
     }
+    var description = document.getElementById("description").value;
+    querystring += "description=" + encodeURI(description);
+    // querystring += "&";
+
     location = "form.php" + querystring;
 }
 

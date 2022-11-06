@@ -14,9 +14,22 @@
             <input type="radio" id="happy" name="emotion" value="Happy">
             <label for="happy">Happy</label>
             <br><br>
-            <input type="text" name="send_textfield">
-            <input type="button" id="sendButton" value="Send">
-          </form>
+            <input type="text" id="description" name="description">
+            <input type="button" id="sendButton" name="sendButton" value="Send">
+        </form>
+        
+          
+
+          
+
+
+<!-- use Ajax to return 20 most recent messages -->
+
+          
+          
+          
+          
+          
           <script src="script.js"></script>
     </body>
 </html>
