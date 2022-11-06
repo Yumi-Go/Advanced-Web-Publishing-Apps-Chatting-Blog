@@ -1,89 +1,67 @@
-<meta http-equiv="content-type" content="text-html; charset=ISO-8859-1">
-<style>
+<html>
+<head>
+	<title> Message Board </title>
+</head>
+<body>
+<!-- 
 
-.post {
+We will use this table
 
-border: 1px solid black; 
 
-width: 500px; 
+CREATE TABLE `dblab2` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `subject` text NOT NULL,
+  `post` text NOT NULL
+);
 
-margin: 50px; 
 
-padding: 30px;
-}
-
-.sysdev {background: black; color: white;
-font-family: helvetica, sans-serif;}
-
-</style>
-
+-->
 
 <?php
-/* 
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 
-Database Lab 1
-
-
-
-Database Details
-
-host: 127.0.0.1
-user: c1_demo_user
-password: demo_user_password
-database: c1_demo
-
-Database can be viewed at: http://webdevcit.com/adminer.php
+    $db = mysqli_connect ("127.0.0.1", "R00195941_db", "LiftThanStand");
+    mysqli_select_db ($db, "R00195941_db");
+    $charset_set = mysqli_set_charset ($db, 'utf8');
 
 
-Activities
+
+    /* Get the user data */
+
+    $new_emotion = $_POST['emotion'];
+
+    $new_description = $_POST['description'];
 
 
-1 display title of each post (post_title field in the wp_posts table)
-2 display title of each post in reverse chronological order (post_date_gmt)
-3 display the title and author of each post (using wp_posts and wp_users tables) 
-4 Add HTML and CSS to (3) to display each post (include the post content itself - i.e. post_content) in reverse chronological order.
-5 display the title, author and content of each post in the "System Development 2" Category. To achieve you can use wp_users [a table of users] ,wp_posts [table with poist content and title],wp_categories [table of category names], wp_post2cat [a table mapping posts to categories].
+    /* escape the user input to make it safe to place in a query */
+    $safe_subject = mysqli_real_escape_string($db, $new_subject);
+    $safe_post = mysqli_real_escape_string($db, $new_post);
 
-*/
+    
 
-/*c1_demo_user
-demo_user_password
-*/
+    
 
-$db = mysqli_connect ("127.0.0.1", "c1_demo_user", "demo_user_password");
+    /* Send the SQL query to the database and store the result */
 
-if (!$db)
-{
-	echo "Sorry! Can't connect to database";
-	exit();
-}
+    $result = mysqli_query ($db, "INSERT into dblab2 (subject, post) VALUES ('$safe_subject','$safe_post');");
 
-$charset_set = mysqli_set_charset ($db, 'utf8');
-
-if (!$charset_set)
-{
-	echo "Sorry! Can't set character set";
-	exit();
-}
-
-if (!mysqli_select_db ($db, "c1_demo"))
-{
-	echo "Sorry! Can't select database";
-	exit();
-
-}
-
-
-$result = mysqli_query ($db, "SELECT * FROM wp_users,wp_posts,wp_categories, wp_post2cat where wp_users.ID =  wp_posts.post_author AND wp_categories.cat_ID=wp_post2cat.category_id AND wp_post2cat.post_id = wp_posts.ID AND wp_categories.cat_name = 'System Development 2' ORDER by post_date_gmt DESC ;");
-
-
-while ($row = mysqli_fetch_array ($result))
-{
-echo "<div class = \"post sysdev\">";
-echo "<h2>{$row['post_title']}</h2></p>";
-
-echo "<p>by {$row['user_login']}</p>";
-echo "<p>{$row['post_content']}";
-echo "</div>";
-}
+    /* Check if the query was successful */
+    if ($result) 
+    {
+        echo "<p>Message was added!</p>";
+    }
+    else
+    {
+        echo "Error!";
+    }
 ?>
+
+
+
+<p>Enter <a href = "form.html">a new message</a></p>
+<p>View <a href = "display-messages.php">list of posts</a></p>
+
+</body>
+</html>

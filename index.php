@@ -17,14 +17,12 @@
             <input type="text" id="description" name="description">
             <input type="button" id="sendButton" name="sendButton" value="Send">
         </form>
-        
-          
 
-          
+        <!-- use Ajax to return 20 most recent messages -->
+        <h1>Results</h1>
 
-
-<!-- use Ajax to return 20 most recent messages -->
-
+        <div id = "output">
+        </div>
           
           
           

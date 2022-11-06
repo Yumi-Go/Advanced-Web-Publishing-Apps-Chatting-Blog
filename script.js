@@ -18,6 +18,27 @@ function sendData() {
     location = "form.php" + querystring;
 }
 
-var button = document.getElementById("sendButton");
-button.addEventListener("click", sendData);
 
+function showOutput() {
+
+	// var request = "db.php?message=" + document.getElementById('description').value;
+	var request = "/index.php";
+
+	var xhr = new XMLHttpRequest(); 
+   	xhr.open ("GET", request);
+   	
+   	xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+		    // document.getElementById("output").innerHTML = xhr.request;
+            document.getElementById("output").innerHTML = document.getElementById("description").value;
+
+		} 		
+	};
+	
+	xhr.send(null);
+}
+
+
+var button = document.getElementById("sendButton");
+// button.addEventListener("click", sendData);
+button.addEventListener("click", showOutput);
