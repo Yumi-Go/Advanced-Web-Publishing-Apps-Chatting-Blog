@@ -27,10 +27,28 @@ function showOutput() {
 	var xhr = new XMLHttpRequest(); 
    	xhr.open ("GET", request);
    	
+    // var emotion = document.getElementById("emotion").value;
+    var description = document.getElementById("description").value;
+    // var message = "Emotion: " + emotion + description;
+
+    var result = ""
+
+    const emotionNodeList = document.getElementsByName('emotion');
+
    	xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
 		    // document.getElementById("output").innerHTML = xhr.request;
-            document.getElementById("output").innerHTML = document.getElementById("description").value;
+
+            if (document.getElementById("angry").checked || document.getElementById("happy").checked) {
+                emotionNodeList.forEach((node) => {
+                    if (node.checked) {
+                        result = result + node.value;
+                    }
+                });
+            }
+            result = result + "\n" + description;
+            document.getElementById('output').innerText = result;
+        
 
 		} 		
 	};
