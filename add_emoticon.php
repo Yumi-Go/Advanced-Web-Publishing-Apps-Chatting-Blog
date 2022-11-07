@@ -32,10 +32,11 @@
         if (isset($_GET["prev"])) {
         
             $prevPage = $_GET["prev"];
-            
+            // $prevPage = $_SERVER['HTTP_REFERER']
+
             if(isset($prevPage)) {
                 // echo $prevPage;
-                echo "<p><a href = 'index.php?prev=$prevPage'>Back to Emoticons List</a>";
+                echo "<p><a href = 'index.php?emoticons_list=$prevPage'>Back to Emoticons List</a>";
             }
             // else {
             //     echo "<a href="/">Back to Emoticons List</a>";
@@ -58,7 +59,7 @@
         $safeCurrentImage = urlencode($currentImage);
         
         
-        echo "<div class = 'avatar'><a href = 'indexv2.php?image=$safeCurrentImage&prev=$_SERVER['HTTP_REFERER']'><img src = avatars/$currentImage></a><br>$currentImage</div>";
+        echo "<div class = 'avatar'><a href = 'add_emoticon.php?image=$safeCurrentImage&prev=index.php'><img src = 'emoticons/$currentImage'></a><br>$currentImage</div>";
         
     }
 

@@ -4,7 +4,7 @@
         <title>Chat</title>
     </head>
     <body>
-        <p>Add New Emoticons</p>
+        <p><a href = 'add_emoticon.php'>Add New Emoticons</a></p>
         <h1>Live Blog</h1>
         <!-- <p>Choose Emotion</p> -->
         <form action="/form.php" method = get>
