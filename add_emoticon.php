@@ -36,7 +36,7 @@
 
             if(isset($prevPage)) {
                 // echo $prevPage;
-                echo "<p><a href = 'index.php?emoticons_list=$prevPage'>Back to Emoticons List</a>";
+                echo "<p><a href = 'index.php?list=$prevPage'>Back to Emoticons List</a>";
             }
             // else {
             //     echo "<a href="/">Back to Emoticons List</a>";
