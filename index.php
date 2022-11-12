@@ -34,12 +34,16 @@
                         }
                         result = result + "\n" + description;
                         document.getElementById('output').innerText = result;
-                    
-
+                        for (var i = 0; i < emotionNodeList.length; i++) {
+                            emotionNodeList[i].checked = false;
+                        }
                     } 		
                 };
 
                 xhr.send(null);
+                
+
+                document.getElementById("description").value = "";
             }
 
             // var button = document.getElementById("sendButton");
