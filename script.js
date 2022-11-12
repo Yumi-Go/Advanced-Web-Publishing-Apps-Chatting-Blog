@@ -22,7 +22,7 @@ function sendData() {
 function showOutput() {
 
 	// var request = "db.php?message=" + document.getElementById('description').value;
-	var request = "/index.php";
+	var request = "index.php";
 
 	var xhr = new XMLHttpRequest(); 
    	xhr.open ("GET", request);

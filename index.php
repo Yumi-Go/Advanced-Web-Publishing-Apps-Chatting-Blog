@@ -4,10 +4,10 @@
         <title>Chat</title>
     </head>
     <body>
-        <p><a href = 'add_emoticon.php'>Add New Emoticons</a></p>
+        <p><a href = 'add-emotion-form.php'>Add New Emoticons</a></p>
         <h1>Live Blog</h1>
         <!-- <p>Choose Emotion</p> -->
-        <form action="/form.php" method = get>
+        <form action="form.php" method = get>
             <p>Choose Emotion:</p>
             <input type="radio" id="angry" name="emotion" value="Angry">
             <label for="angry">Angry</label>

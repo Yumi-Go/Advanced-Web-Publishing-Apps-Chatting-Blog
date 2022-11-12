@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <head>
     <title>data from form</title>
 </head>
@@ -46,4 +46,4 @@
 
 
 </body>
-</html>
+</html> -->
