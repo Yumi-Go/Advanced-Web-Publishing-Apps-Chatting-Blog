@@ -16,8 +16,6 @@
 </script>
 
 
-<h1>Message Board</h1>
-
 <!-- 
 CREATE TABLE 'messages' (
   'id' int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -40,9 +38,9 @@ CREATE TABLE 'emotions' (
 
     $current_result = mysqli_query ($db, "SELECT * from messages;");
 
-    $emotion_from_db = "";
-    $description_from_db = "";
-    $result_from_db = "";
+    // $emotion_from_db = "";
+    // $description_from_db = "";
+    // $result_from_db = "";
     while ($row = mysqli_fetch_array($current_result)) {
         // echo "<h3>${row['emotion']} </h3>";
         // echo "<p>${row['description']}</p>";
@@ -51,7 +49,7 @@ CREATE TABLE 'emotions' (
         // $description_from_db = ${row['description']};
         // $time_from_db = ${row['time']};
         // $result_from_db = $description_from_db + $time_from_db + "\n\n\n";
-        echo "<div class = 'result'>{$row['description']}</div>\n";
+        echo "<div class = 'result'>{$row['time']}\n{$row['description']}</div>\n";
     }
 
 

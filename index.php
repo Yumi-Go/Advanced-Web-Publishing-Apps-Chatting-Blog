@@ -11,13 +11,14 @@
 
             .result {
                 font-family: helvetica, sans-serif;
-                background: #aaaaaa; 
-                border-top: 1px solid black;
+                background: #f2f2f2; 
+                border-top: 0.5px solid #bfbfbf;
+                border-bottom: 0.5px solid #bfbfbf;
                 padding: 5px;
             }
             
             .result:hover {
-                background: white;
+                background: pink;
             }
         </style>
         <title>Chat</title>
