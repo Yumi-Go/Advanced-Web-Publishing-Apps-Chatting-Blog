@@ -80,33 +80,34 @@ CREATE TABLE 'emotions' (
     echo "
     <div class = 'avatar'>
         <form action = 'add-emotion-to-db.php' method = 'POST'>
-            <label for='name'>Name: </label>
-            <input type='text' id='name' name='name'><br>
-            <input type='radio' id='no_image' name='images' value='0'>
+            <label for='image_name'>Name: </label>
+            <input type='text' id='image_name' name='image_name'><br>
+            <input type='radio' id='no_image' name='images' value='None'>
             <label for='no_image'>No Image</label><br>
     ";
 
-    $counter = 1;
+    // $counter = 1;
 
     foreach ($filesInDir as $currentImage) {
         // $safeCurrentImage = urlencode($currentImage);
 
         $tempExt = findExts($currentImage);
         if (in_array($tempExt, $imageFormats)) {
-            $image_id = 'image'.$counter;
+            // $image_id = 'image'.$counter;
             $image_src = $imgDir.$currentImage;
             echo "
-            <input type='radio' id='$image_id' name='images' value='$counter'>
+            <p>for check: $currentImage</p>
+            <input type='radio' id='$currentImage' name='images' value='$currentImage'>
             <label for='image_id'><img src='$image_src' id='img'></label>
             <br>
             ";
-            $counter++;
+            // $counter++;
         }
     }
     
     echo "
             <br><br>
-            <input type='button' id='submitButton' name='submitButton' value='Submit'>
+            <input type='submit' id='submitButton' name='submitButton' value='Submit'>
         </form>
     </div>
     ";

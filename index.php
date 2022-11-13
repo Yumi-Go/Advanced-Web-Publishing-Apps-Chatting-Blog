@@ -31,6 +31,7 @@
                 const emotionNodeList = document.getElementsByName('emotion');
                 var description = document.getElementById("description").value;
 
+
                 // var request = "list-messages-from-db.php?message=" + escape(document.getElementByName('description').value) + escape(document.getElementById('description').value);
                 // var request = "list-messages-from-db.php?";
                 var querystring = "";
@@ -100,7 +101,7 @@
                 const emotionNodeList = document.getElementsByName('emotion');
                 var description = document.getElementById("description").value;
 
-                var querystring = "";
+                // var querystring = "";
 
                 // /* Check which emotion was selected in radio button */
                 // if (isset($emotion)) {

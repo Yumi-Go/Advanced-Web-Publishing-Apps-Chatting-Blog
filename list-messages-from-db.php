@@ -49,7 +49,7 @@ CREATE TABLE 'emotions' (
         // $description_from_db = ${row['description']};
         // $time_from_db = ${row['time']};
         // $result_from_db = $description_from_db + $time_from_db + "\n\n\n";
-        echo "<div class = 'result'>{$row['time']}\n{$row['description']}</div>\n";
+        echo "<div class = 'result'>{$row['emotion_id']}<Br>{$row['time']}<br>{$row['description']}</div>";
     }
 
 

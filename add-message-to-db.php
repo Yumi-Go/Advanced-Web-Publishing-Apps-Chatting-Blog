@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title> Message Board </title>
+	<!-- <title> Message Board </title> -->
 </head>
 <body>
 <!-- 
@@ -52,7 +52,7 @@ CREATE TABLE 'emotions' (
     //     echo "Description: Not Provided"
     // }
 
-    $emotion_id = "";
+    // $emotion_id = "";
     $new_emotion = $_POST['emotion'];
     $new_description = $_POST['description'];
     
@@ -61,7 +61,8 @@ CREATE TABLE 'emotions' (
     $safe_description = mysqli_real_escape_string($db, $new_description);
 
     
-    $result = mysqli_query ($db, "INSERT into messages (description, time) VALUES ('$safe_description', now());");
+    $result = mysqli_query ($db, 
+    "INSERT into messages (emotion_id, description, time) VALUES ('$safe_emotion', '$safe_description', now());");
 
     /* Check if the query was successful */
     if ($result) {
