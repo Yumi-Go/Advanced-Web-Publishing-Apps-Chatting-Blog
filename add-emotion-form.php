@@ -9,44 +9,42 @@
 
 <body>
 
-<?php
-	 
-    // $emoticonGroup = array(
-    //     "01.png",
-    //     "02.png",
-    //     "03.png",
-    //     "04.png",
-    //     "05.png",
-    //     "06.png",
-    //     "07.png",
-    //     "08.png"
-    // );
+<!-- <script>
+    function addEmotion() {
+    
+        const imageNodeList = document.getElementsByName('image');
+        var image_name = document.getElementById("image_name").value;
+   
+        // var querystring = "?";
+        // var rbs = document.querySelectorAll('input[name="image"]');
+        // var image = null;
+        // for (var i = 0; i < rbs.length; i++) {
+        //     if (rbs[i].checked) {
+        //         image = rbs[i].value;
+        //         break;
+        //     }
+        // }
+        // querystring = "image=" + escape(image) + "&";
 
-    // if (isset($_GET["image"])) {
-    //     $currentImage = $_GET["image"];
-    //     echo "<img src = 'emoticons/$currentImage'></a><br>$currentImage</div>";
-        
-    //     if (isset($_GET["prev"])) {
-        
-    //         $prevPage = $_GET["prev"];
-    //         // $prevPage = $_SERVER['HTTP_REFERER']
+        var querystring = "?";
+        imageNodeList.forEach((node) => {
+            if (node.checked) {
+                querystring += "image=" + escape(node.value) + "&";
+            }
+        });
 
-    //         if(isset($prevPage)) {
-    //             // echo $prevPage;
-    //             echo "<p><a href = 'index.php?list=$prevPage'>Back to Emoticons List</a>";
-    //         }
-    //         // else {
-    //         //     echo "<a href="/">Back to Emoticons List</a>";
-    //         // }
+        querystring += "image_name="+escape(image_name);
+        location = "add-emotion-to-db.php"+querystring;
+    }
 
-        
-    //     }
-	 
-    // }
+    window.addEventListener('load', function(){
+        document.getElementById("submitButton").addEventListener("click", addEmotion);
+    });
 
-?>
 
-	<h1>Create New Emoticon</h1>
+</script> -->
+
+<h1>Create New Emoticon</h1>
 
     
 
@@ -66,11 +64,15 @@ CREATE TABLE 'emotions' (
 -->
 	 
 <?php
-    // $images = $emoticonGroup;
 
     function findExts ($fileName) {
         $ext = pathinfo($fileName, PATHINFO_EXTENSION);
         return $ext;
+    }
+
+    function findName ($fileName) {
+        $fName = pathinfo($fileName, PATHINFO_FILENAME);
+        return $fName;
     }
 
     $imageFormats = array('png', 'jpg', 'jpeg', 'gif');
@@ -79,45 +81,41 @@ CREATE TABLE 'emotions' (
 
     echo "
     <div class = 'avatar'>
-        <form action = 'add-emotion-to-db.php' method = 'POST'>
+        <form action = 'add-emotion-to-db.php' method = 'post'>
             <label for='image_name'>Name: </label>
             <input type='text' id='image_name' name='image_name'><br>
-            <input type='radio' id='no_image' name='images' value='None'>
+            <input type='radio' id='no_image' name='image' value='None'>
             <label for='no_image'>No Image</label><br>
     ";
 
-    // $counter = 1;
+    // $radiobtn_echo = '';
+    // foreach ($filesInDir as $currentImage) {
+    //     // $safeCurrentImage = urlencode($currentImage);
+    //     $tempExt = findExts($currentImage);
+    //     if (in_array($tempExt, $imageFormats)) {
+    //         $imageNo = findName($currentImage);
+    //         $imageSrc = $imgDir.$currentImage;   
+    //         $phrase = "<p>for check: $currentImage</p>\n
+    //         <input type='radio' id='$imageNo' name='image' value='$imageNo'>\n
+    //         <label for='$imageNo'><img src='$imageSrc' id='img'></label><br>\n";
+    //         $radiobtn_echo = $radiobtn_echo . ' ' . $phrase;
+    //     }
+    // }
+    // echo "$radiobtn_echo";
+
 
     foreach ($filesInDir as $currentImage) {
         // $safeCurrentImage = urlencode($currentImage);
-
         $tempExt = findExts($currentImage);
         if (in_array($tempExt, $imageFormats)) {
-            // $image_id = 'image'.$counter;
-            $image_src = $imgDir.$currentImage;
-            echo "
-            <p>for check: $currentImage</p>
-            <input type='radio' id='$currentImage' name='images' value='$currentImage'>
-            <label for='image_id'><img src='$image_src' id='img'></label>
-            <br>
-            ";
-            // $counter++;
+            $imageNo = findName($currentImage);
+            $imageSrc = $imgDir.$currentImage;
+            echo "<p>for check: $currentImage</p><input type='radio' id='$imageNo' name='image' value='$imageNo'><label for='$imageNo'><img src='$imageSrc' id='img'></label><br>";
         }
     }
-    
-    echo "
-            <br><br>
-            <input type='submit' id='submitButton' name='submitButton' value='Submit'>
-        </form>
-    </div>
-    ";
 
+    echo "<br><br><input type='submit' id='submit' name='submit' value='Submit'></form></div>";
 
-        //     <div class = 'avatar'>
-        //         <a href = 'add_emoticon.php?image=$safeCurrentImage&prev=index.php'><img src = 'emoticons/$currentImage'></a><br>$currentImage
-        //     </div>
-        // ";
-        
 ?>
 </body>
 </html>

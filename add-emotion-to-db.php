@@ -27,33 +27,51 @@ CREATE TABLE 'emotions' (
     $charset_set = mysqli_set_charset ($db, 'utf8');
 
 
-    // $new_emotion = "";
-    // $new_description = "";
+    $image_name = "";
+    $image = "";
 
-    // if (isset($_POST["emotion"])) {
-    //     $new_emotion = $_POST["emotion"];
-    // } else {
-    //     echo "Emotion: Not Provided";
-    // }
-    // if (isset($_POST["description"])) {
-    //     $new_description = $_POST["description"];
-    // } else {
-    //     echo "Description: Not Provided"
-    // }
 
-    $new_image_name = $_POST['image_name'];
-    $new_image = $_POST['images'];
+    if(isset($_POST['submit'])) {
+        // $image_name = urldecode($POST['image_name']);
+        // $image = urldecode($POST['image']);
+
+        // $image_name = isset($POST['image_name']);
+        // $image = isset($POST['image']);
+
+        if (isset($_POST["image_name"])) {
+            $image_name = $_POST["image_name"];
+        }
+        // else {
+        // echo "image_name: Not Provided";
+        // }
+        if (isset($_POST["image"])) {
+            $image = $_POST["image"];
+        }
+        // else {
+        //     echo "image: Not Provided"
+        // }
+
+    }
+
+
+
+
+    // $new_image_name = $POST['image_name'];
+    // $new_image = $POST['image'];
     
 
-    $safe_name = mysqli_real_escape_string($db, $new_image_name);
-    $safe_image = mysqli_real_escape_string($db, $new_image);
+    $safe_name = mysqli_real_escape_string($db, $image_name);
+    $safe_image = mysqli_real_escape_string($db, $image);
 
     
-    $result = mysqli_query ($db, "INSERT into emoticons (image, name) VALUES ('$safe_image', $safe_name);");
+    $result = mysqli_query ($db, "INSERT into emotions (image, name) VALUES ('$safe_image', '$safe_name');");
 
-    /* Check if the query was successful */
     if ($result) {
-        echo "<p>Emoticon was added!</p>";
+        echo "
+            <p>Emotion Name + Image added!</p>
+            <p><a href = 'add-emotion-form.php'>Add New Emoticon</a></p>
+            <p><a href = 'index.php'>Home</a></p>
+        ";
     } else {
         echo "Error!";
     }
