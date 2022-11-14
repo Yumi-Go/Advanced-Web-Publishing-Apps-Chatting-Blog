@@ -27,31 +27,17 @@ CREATE TABLE 'emotions' (
     mysqli_select_db ($db, 'R00195941_db');
     $charset_set = mysqli_set_charset ($db, 'utf8');
 
-	/* Check which emotion was selected in radio button */
-
-    // if (isset($_POST["emotion"])) {
-    //     $new_emotion = $_POST["emotion"];
-    // } else {
-    //     echo "Emotion: Not Provided";
-    // }
-    // if (isset($_POST["description"])) {
-    //     $new_description = $_POST["description"];
-    // } else {
-    //     echo "Description: Not Provided"
-    // }
-
-
     // $emotion = "";
     // $description = "";
 
 
-    // if (isset($_POST['emotion'])) {
+    if (isset($_POST['emotion'])) {
         $emotion = $_POST['emotion'];
-    // }
+    }
 
-    // if (isset($_POST['description'])) {
+    if (isset($_POST['description'])) {
         $description = $_POST['description'];
-    // }
+    }
 
     $safe_emotion = mysqli_real_escape_string($db, $emotion);
     $safe_description = mysqli_real_escape_string($db, $description);
@@ -65,12 +51,6 @@ CREATE TABLE 'emotions' (
     } else {
         echo "Error!";
     }
-
-    // while ($row = mysqli_fetch_array ($result)) {
-    //    echo "<div class = 'result'>{$row}</div>\n";
-    // }
-
-
 
 ?>
 

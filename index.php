@@ -81,33 +81,13 @@
 
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById("output").innerHTML = xhr.responseText;
-
-
-
-                        // if (document.getElementById("angry").checked || document.getElementById("happy").checked) {
-                        //     emotionNodeList.forEach((node) => {
-                        //         if (node.checked) {
-                        //             result = result + node.value;
-                        //         }
-                        //     });
-                        // }
-                        // result = result + "\n" + description;
-                        // document.getElementById('output').innerText = result;
-                        // for (var i = 0; i < emotionNodeList.length; i++) {
-                        //     emotionNodeList[i].checked = false;
-                        //     document.getElementById("description").value = "";
-                        // }
+                        document.getElementById("output_txt").innerHTML = xhr.responseText;
                     }
                 };
 
                 xhr.send(null);
 
             }
-
-            // var button = document.getElementById("sendButton");
-            // // button.addEventListener("click", sendData);
-            // button.addEventListener("click", showOutput);
 
             window.addEventListener('load', function(){
                 document.getElementById("sendButton").addEventListener("click", sendData);
@@ -146,6 +126,8 @@
         <h1>Results</h1>
 
         <div id = "output">
+            <div id = "output_img"></div>
+            <div id = "output_txt"></div>
         </div>
           
           

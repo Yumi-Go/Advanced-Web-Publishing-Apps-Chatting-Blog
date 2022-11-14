@@ -88,21 +88,6 @@ CREATE TABLE 'emotions' (
             <label for='no_image'>No Image</label><br>
     ";
 
-    // $radiobtn_echo = '';
-    // foreach ($filesInDir as $currentImage) {
-    //     // $safeCurrentImage = urlencode($currentImage);
-    //     $tempExt = findExts($currentImage);
-    //     if (in_array($tempExt, $imageFormats)) {
-    //         $imageNo = findName($currentImage);
-    //         $imageSrc = $imgDir.$currentImage;   
-    //         $phrase = "<p>for check: $currentImage</p>\n
-    //         <input type='radio' id='$imageNo' name='image' value='$imageNo'>\n
-    //         <label for='$imageNo'><img src='$imageSrc' id='img'></label><br>\n";
-    //         $radiobtn_echo = $radiobtn_echo . ' ' . $phrase;
-    //     }
-    // }
-    // echo "$radiobtn_echo";
-
 
     foreach ($filesInDir as $currentImage) {
         // $safeCurrentImage = urlencode($currentImage);

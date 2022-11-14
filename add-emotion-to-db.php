@@ -53,13 +53,7 @@ CREATE TABLE 'emotions' (
 
     }
 
-
-
-
-    // $new_image_name = $POST['image_name'];
-    // $new_image = $POST['image'];
     
-
     $safe_name = mysqli_real_escape_string($db, $image_name);
     $safe_image = mysqli_real_escape_string($db, $image);
 
