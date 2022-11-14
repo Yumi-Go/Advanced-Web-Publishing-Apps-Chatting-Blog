@@ -61,8 +61,7 @@ CREATE TABLE 'emotions' (
     $safe_description = mysqli_real_escape_string($db, $new_description);
 
     
-    $result = mysqli_query ($db, 
-    "INSERT into messages (emotion_id, description, time) VALUES ('$safe_emotion', '$safe_description', now());");
+    $result = mysqli_query ($db, "INSERT into messages (emotion_id, description, time) VALUES ('$safe_emotion', '$safe_description', now());");
 
     /* Check if the query was successful */
     if ($result) {

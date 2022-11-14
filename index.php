@@ -157,16 +157,25 @@
 
 
         </script>
-        
+
+
         <p><a href = 'add-emotion-form.php'>Add New Emoticons</a></p>
         <h1>Live Blog</h1>
         <!-- <p>Choose Emotion</p> -->
         <form action = "add-message-to-db.php" method = "POST">
             <p>Choose Emotion:</p>
-            <input type="radio" id="angry" name="emotion" value="1">
-            <label for="angry">Angry</label>
-            <input type="radio" id="happy" name="emotion" value="2">
-            <label for="happy">Happy</label>
+ 
+            <?php  
+                $db = mysqli_connect ('localhost', 'R00195941_db', 'LiftThanStand');
+                mysqli_select_db ($db, 'R00195941_db');
+                $charset_set = mysqli_set_charset ($db, 'utf8');
+
+                $current_result = mysqli_query ($db, "SELECT id, name FROM emotions;");
+
+                while ($row = mysqli_fetch_array($current_result)) {
+                    echo "<input type='radio' id='{$row['id']}' name='emotion' value='{$row['id']}'><label for='{$row['id']}'>{$row['name']}</label>";
+                }
+            ?>
             <br><br>
             <input type="text" id="description" name="description">
             <input type="button" id="sendButton" name="sendButton" value="Send">
