@@ -110,7 +110,8 @@ CREATE TABLE 'emotions' (
         if (in_array($tempExt, $imageFormats)) {
             $imageNo = findName($currentImage);
             $imageSrc = $imgDir.$currentImage;
-            echo "<p>for check: $currentImage</p><input type='radio' id='$imageNo' name='image' value='$imageNo'><label for='$imageNo'><img src='$imageSrc' id='img'></label><br>";
+            echo "<p>for check: $currentImage</p><input type='radio' id='$imageNo' name='image' value='$imageNo'>
+            <label for='$imageNo'><img src='$imageSrc' id='img'></label><br>";
         }
     }
 
