@@ -30,10 +30,6 @@
 
                 const emotionNodeList = document.getElementsByName('emotion');
                 var description = document.getElementById("description").value;
-
-
-                // var request = "list-messages-from-db.php?message=" + escape(document.getElementByName('description').value) + escape(document.getElementById('description').value);
-                // var request = "list-messages-from-db.php?";
                 var querystring = "";
 
                 emotionNodeList.forEach((node) => {
@@ -41,31 +37,7 @@
                         querystring = "emotion=" + escape(node.value) + "&";
                     }
                 });
-
-                // var rbs = document.querySelectorAll('input[name="emotion"]');
-                // var selection = null;
-                // for (var i = 0; i < rbs.length; i++) {
-                //     if (rbs[i].checked) {
-                //         selection = rbs[i].value;
-                //         break;
-                //     }
-                // }
-
                 querystring += "description="+escape(description);
-
-                // /* Check which emotion was selected in radio button */
-                // if (isset($emotion)) {
-                //     if ($emotion == "Angry") {
-                //         echo "emotion: Angry";
-                //     } else {
-                //         echo "emotion : Happy";
-                //     }
-                // } else {
-                //     echo "emotion not entered";
-                // }
-
-
-                // var request = "index.php";
                 var xhr = new XMLHttpRequest(); 
                 xhr.open ("POST", "add-message-to-db.php");
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -73,16 +45,6 @@
 
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {
-                        
-                        // if (document.getElementById("angry").checked || document.getElementById("happy").checked) {
-                        //     emotionNodeList.forEach((node) => {
-                        //         if (node.checked) {
-                        //             result = result + node.value;
-                        //         }
-                        //     });
-                        // }
-                        // result = result + "\n" + description;
-                        // document.getElementById('output').innerText = result;
                         for (var i = 0; i < emotionNodeList.length; i++) {
                             emotionNodeList[i].checked = false;
                             document.getElementById("description").value = "";

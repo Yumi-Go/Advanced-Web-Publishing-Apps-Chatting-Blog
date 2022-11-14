@@ -27,19 +27,7 @@ CREATE TABLE 'emotions' (
     mysqli_select_db ($db, 'R00195941_db');
     $charset_set = mysqli_set_charset ($db, 'utf8');
 
-	// /* Check which emotion was selected in radio button */
-	// if (isset($emotion)) {
-    //     if ($emotion == "Angry") {
-	// 		echo "emotion: Angry";
-	// 	} else {
-	// 		echo "emotion : Happy";
-	// 	}
-	// } else {
-    //     echo "emotion not entered";
-    // }
-
-    // $new_emotion = "";
-    // $new_description = "";
+	/* Check which emotion was selected in radio button */
 
     // if (isset($_POST["emotion"])) {
     //     $new_emotion = $_POST["emotion"];
@@ -52,13 +40,21 @@ CREATE TABLE 'emotions' (
     //     echo "Description: Not Provided"
     // }
 
-    // $emotion_id = "";
-    $new_emotion = $_POST['emotion'];
-    $new_description = $_POST['description'];
-    
 
-    $safe_emotion = mysqli_real_escape_string($db, $new_emotion);
-    $safe_description = mysqli_real_escape_string($db, $new_description);
+    // $emotion = "";
+    // $description = "";
+
+
+    // if (isset($_POST['emotion'])) {
+        $emotion = $_POST['emotion'];
+    // }
+
+    // if (isset($_POST['description'])) {
+        $description = $_POST['description'];
+    // }
+
+    $safe_emotion = mysqli_real_escape_string($db, $emotion);
+    $safe_description = mysqli_real_escape_string($db, $description);
 
     
     $result = mysqli_query ($db, "INSERT into messages (emotion_id, description, time) VALUES ('$safe_emotion', '$safe_description', now());");
