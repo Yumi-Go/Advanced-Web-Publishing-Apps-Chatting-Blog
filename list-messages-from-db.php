@@ -3,10 +3,12 @@
     <title> Message Board </title>
 	
 	<style>
-		h3 {
-		
+		h3 {		
 		font-family: helvetica, sans-serif;
 		}
+        #img {
+            width: 60px;
+        }
 	</style>
 </head>
 <body>
@@ -36,14 +38,14 @@ CREATE TABLE 'emotions' (
     mysqli_select_db ($db, 'R00195941_db');
     $charset_set = mysqli_set_charset ($db, 'utf8');
 
-
     $imageFormats = array('png', 'jpg', 'jpeg', 'gif');
     $imgDir = 'images/';
-    $filesInDir = scandir($imgDir);
+
+    $files = scandir($imgDir);
 
 
     // $current_result = mysqli_query ($db, "SELECT * from messages;");
-    $current_result = mysqli_query ($db, "SELECT M.emotion_id, M.description, M.time, E.imgFileName, E.imgName from messages M, emotions E WHERE M.emotion_id = E.id;");
+    $current_result = mysqli_query ($db, "SELECT M.emotion_id, M.description, M.time, E.imgFileName, E.imgName from messages as M, emotions as E WHERE M.emotion_id = E.id;");
 
     function extractName ($fileName) {
         $fName = pathinfo($fileName, PATHINFO_FILENAME);
@@ -51,27 +53,37 @@ CREATE TABLE 'emotions' (
     }
 
     $echoImage = "";
+    $imageSrc = "";
 
 
     while ($row = mysqli_fetch_array($current_result)) {
-        $aa = implode(" ", $row);
-
-        echo "<div class = 'check2'>".$aa." why........</div>";
+        // $aa = implode(" ", $row);
+        // echo "<div class = 'check2'>".$aa." why........</div>";
     
-        for ($i = 0; $i < count($filesInDir); $i++) {
-            
-            // $tempName = pathinfo($array[$i], PATHINFO_FILENAME);
-            // echo "<div class = 'check2'>".$array[$i]." why........</div>";
+        // for ($i = 0; $i < count($filesInDir); $i++) {            
+        //     // $tempName = pathinfo($array[$i], PATHINFO_FILENAME);
+        //     // echo "<div class = 'check2'>".$array[$i]." why........</div>";
+    //             $tempName = extractName($currentImage);
+    // if ($array[$i] == $row['M.emotion_id']) {
+        // $imageSrc = $imgDir.$array[$i];
+        // $echoImage = "<img src='$imageSrc'>";
+        // break;
 
-            if ($array[$i] == $row['M.emotion_id']) {
-                // $emotionImg_name = $tempName;
-                $imageSrc = $imgDir.$array[$i];
-                $echoImage = "<img src='$imageSrc'>";
-                break;
+        foreach ($files as $currentfile) {
+            if($currentfile != '.' && $currentfile != '..') {
+                // $aa = implode(" ", $files);
+                // echo "<div class = 'check4'>".$aa." why........</div>";
+                // echo "<div class = 'check2'>$currentfile this is currentfile Name........</div>";
+                $tempName = pathinfo($currentfile, PATHINFO_FILENAME);
+                // echo "<div class = 'check3'>$tempName this is tempName........</div>";
+                // echo "<div class = 'check5'>$row['imgFileName'] this is E.imgFileName........</div>";
+                if ($tempName == $row['imgFileName']) {
+                    $imageSrc = $imgDir.$currentfile;
+                    // echo "<div class = 'check6'>$imageSrc this is imageSrc........</div>"
+                    $echoImage = "<img src='{$imageSrc}' id='img'>";
+                    break;
+                }
             }
-            // else {
-            //     $echoImage = "Error. Can not load emoticon image";
-            // }
         }
 
 
@@ -80,67 +92,11 @@ CREATE TABLE 'emotions' (
 
 
 
-        // foreach ($filesInDir as $a) {
-        //     $aa = implode(" ", $filesInDir);
 
 
-        //     $tempName = pathinfo($a, PATHINFO_FILENAME);
-        //     echo "<div class = 'check2'>".$a." why........</div>";
 
-        //     if ($tempName == $row['M.emotion_id']) {
-        //         // $emotionImg_name = $tempName;
-        //         $imageSrc = $imgDir.$a;
-        //         $echoImage = "<img src='$imageSrc'>";
-        //         break;
-        //     }
-        //     // else {
-        //     //     $echoImage = "Error. Can not load emoticon image";
-        //     // }
-        // }
-    // }
-
-    // while ($row = mysqli_fetch_array($current_result)) {
-
-    //     // $emotion_from_db = ${row['emotion']};
-    //     // $description_from_db = ${row['description']};
-    //     // $time_from_db = ${row['time']};
-    //     // $result_from_db = $description_from_db + $time_from_db + "\n\n\n";
-    
-    //     $imageFormats = array('png', 'jpg', 'jpeg', 'gif');
-    //     $imgDir = 'images/';
-    //     $filesInDir = scandir($imgDir);
-
-    //     // $emotionID_from_messages = {$row['emotion_id']};
-    //     // $query_findImgName = "SELECT imgFileName FROM emotions WHERE id = '{$emotionID_from_messages}'";
-    //     // $emotionImg_name = mysqli_query ($db, $query_findImgName);
-    //     $echoImage = "";
-
-
-    //     if (!($row['emotion_id'] == NULL)) {
-    //         foreach ($filesInDir as $currentImage) {
-    //             echo "<div class = 'check'>".$emotionImg_name."</div>";
-    //             // $safeCurrentImage = urlencode($currentImage);
-    //             $tempName = extractName($currentImage);
-
-    //             if ($tempName == $query_findImgName) {
-    //                 // echo "<div class = 'check2'>$tempName</div>";
-
-    //                 // $emotionImg_name = $tempName;
-    //                 $imageSrc = $imgDir.$currentImage;
-    //                 $echoImage = "<img src='$imageSrc'/>";
-    //                 break;
-    //             }
-    //             // else {
-    //             //     $echoImage = "Error. Can not load emoticon image";
-    //             // }
-    //         }
-    //     } else {
-    //         $echoImage = "No Image";
-    //     }
-
-
-        // echo "<div class = 'result_image'>$echoImage<br>Image should be placed here</div>";
-        echo "<div class = 'result'>".$echoImage."<br>".$row['time']."<br>".$row['description']."</div>";
+        echo "<div class = 'result_image'>".$echoImage."<br>Image should be placed here</div>";
+        echo "<div class = 'result'>".$row['time']."<br>".$row['description']."</div>";
 
     }
 
