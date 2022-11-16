@@ -12,28 +12,28 @@
 <!-- <script>
     function addEmotion() {
     
-        const imageNodeList = document.getElementsByName('image');
-        var image_name = document.getElementById("image_name").value;
+        const imgFileNameNodeList = document.getElementsByName('imgFileName');
+        var imgName = document.getElementById("imgName").value;
    
         // var querystring = "?";
-        // var rbs = document.querySelectorAll('input[name="image"]');
-        // var image = null;
+        // var rbs = document.querySelectorAll('input[name="imgFileName"]');
+        // var imgFileName = null;
         // for (var i = 0; i < rbs.length; i++) {
         //     if (rbs[i].checked) {
-        //         image = rbs[i].value;
+        //         imgFileName = rbs[i].value;
         //         break;
         //     }
         // }
-        // querystring = "image=" + escape(image) + "&";
+        // querystring = "imgFileName=" + escape(imgFileName) + "&";
 
         var querystring = "?";
-        imageNodeList.forEach((node) => {
+        imgFileNameNodeList.forEach((node) => {
             if (node.checked) {
-                querystring += "image=" + escape(node.value) + "&";
+                querystring += "imgFileName=" + escape(node.value) + "&";
             }
         });
 
-        querystring += "image_name="+escape(image_name);
+        querystring += "imgName="+escape(imgName);
         location = "add-emotion-to-db.php"+querystring;
     }
 
@@ -58,8 +58,8 @@ CREATE TABLE 'messages' (
 
 CREATE TABLE 'emotions' (
   'id' int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  'image' varchar NULL, 
-  'name' varchar NOT NULL
+  'imgFileName' varchar NULL, 
+  'imgName' varchar NOT NULL
 );
 -->
 	 
@@ -82,9 +82,9 @@ CREATE TABLE 'emotions' (
     echo "
     <div class = 'avatar'>
         <form action = 'add-emotion-to-db.php' method = 'post'>
-            <label for='image_name'>Name: </label>
-            <input type='text' id='image_name' name='image_name'><br>
-            <input type='radio' id='no_image' name='image' value='None'>
+            <label for='imgName'>Name: </label>
+            <input type='text' id='imgName' name='imgName'><br>
+            <input type='radio' id='no_image' name='imgFileName' value='None'>
             <label for='no_image'>No Image</label><br>
     ";
 
@@ -93,10 +93,10 @@ CREATE TABLE 'emotions' (
         // $safeCurrentImage = urlencode($currentImage);
         $tempExt = findExts($currentImage);
         if (in_array($tempExt, $imageFormats)) {
-            $imageNo = findName($currentImage);
+            $imgFileName = findName($currentImage);
             $imageSrc = $imgDir.$currentImage;
-            echo "<p>for check: $currentImage</p><input type='radio' id='$imageNo' name='image' value='$imageNo'>
-            <label for='$imageNo'><img src='$imageSrc' id='img'></label><br>";
+            echo "<p>for check: $currentImage</p><input type='radio' id='$imgFileName' name='imgFileName' value='$imgFileName'>
+            <label for='$imgFileName'><img src='$imageSrc' id='img'></label><br>";
         }
     }
 

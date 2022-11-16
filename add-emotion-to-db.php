@@ -12,8 +12,8 @@ CREATE TABLE 'messages' (
 
 CREATE TABLE 'emotions' (
   'id' int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  'image' varchar NULL, 
-  'name' varchar NOT NULL
+  'imgFileName' varchar NULL, 
+  'imgName' varchar NOT NULL
 );
 -->
 
@@ -27,38 +27,38 @@ CREATE TABLE 'emotions' (
     $charset_set = mysqli_set_charset ($db, 'utf8');
 
 
-    $image_name = "";
-    $image = "";
+    $imgName = "";
+    $imgFileName = "";
 
 
     if(isset($_POST['submit'])) {
-        // $image_name = urldecode($POST['image_name']);
-        // $image = urldecode($POST['image']);
+        // $imgName = urldecode($POST['imgName']);
+        // $imgFileName = urldecode($POST['imgFileName']);
 
-        // $image_name = isset($POST['image_name']);
-        // $image = isset($POST['image']);
+        // $imgName = isset($POST['imgName']);
+        // $imgFileName = isset($POST['imgFileName']);
 
-        if (isset($_POST["image_name"])) {
-            $image_name = $_POST["image_name"];
+        if (isset($_POST["imgName"])) {
+            $imgName = $_POST["imgName"];
         }
         // else {
-        // echo "image_name: Not Provided";
+        // echo "imgName: Not Provided";
         // }
-        if (isset($_POST["image"])) {
-            $image = $_POST["image"];
+        if (isset($_POST["imgFileName"])) {
+            $imgFileName = $_POST["imgFileName"];
         }
         // else {
-        //     echo "image: Not Provided"
+        //     echo "imgFileName: Not Provided"
         // }
 
     }
 
     
-    $safe_name = mysqli_real_escape_string($db, $image_name);
-    $safe_image = mysqli_real_escape_string($db, $image);
+    $safe_imgName = mysqli_real_escape_string($db, $imgName);
+    $safe_imgFileName = mysqli_real_escape_string($db, $imgFileName);
 
     
-    $result = mysqli_query ($db, "INSERT into emotions (image, name) VALUES ('$safe_image', '$safe_name');");
+    $result = mysqli_query ($db, "INSERT into emotions (imgFileName, imgName) VALUES ('$safe_imgFileName', '$safe_imgName');");
 
     if ($result) {
         echo "
@@ -78,10 +78,6 @@ CREATE TABLE 'emotions' (
 
 ?>
 
-
-
-<!-- <p>Enter <a href = "form.html">a new message</a></p>
-<p>View <a href = "display-messages.php">list of posts</a></p> -->
 
 </body>
 </html>

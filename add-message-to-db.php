@@ -13,8 +13,8 @@ CREATE TABLE 'messages' (
 
 CREATE TABLE 'emotions' (
   'id' int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  'image' varchar NULL, 
-  'name' varchar NOT NULL
+  'imgFileName' varchar NULL, 
+  'imgName' varchar NOT NULL
 );
 -->
 

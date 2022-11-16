@@ -112,10 +112,10 @@
                 mysqli_select_db ($db, 'R00195941_db');
                 $charset_set = mysqli_set_charset ($db, 'utf8');
 
-                $current_result = mysqli_query ($db, "SELECT id, name FROM emotions;");
+                $current_result = mysqli_query ($db, "SELECT id, imgName FROM emotions;");
 
                 while ($row = mysqli_fetch_array($current_result)) {
-                    echo "<input type='radio' id='{$row['id']}' name='emotion' value='{$row['id']}'><label for='{$row['id']}'>{$row['name']}</label>";
+                    echo "<input type='radio' id='{$row['id']}' name='emotion' value='{$row['id']}'><label for='{$row['id']}'>{$row['imgName']}</label>";
                 }
             ?>
             <br><br>
