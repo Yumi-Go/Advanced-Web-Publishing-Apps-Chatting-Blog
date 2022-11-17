@@ -100,14 +100,18 @@ CREATE TABLE 'emotions' (
 
     while ($row = mysqli_fetch_array($current_result)) {
 
-        foreach ($files as $currentfile) {
-            if($currentfile != '.' && $currentfile != '..') {
-                $tempName = pathinfo($currentfile, PATHINFO_FILENAME);
-                if ($tempName == $row['imgFileName']) {
-                    $imageSrc = $imgDir.$currentfile;
-                    $echoImage = "<img src='{$imageSrc}' id='img'>";
-                    echo "<div id = 'result'><div id = 'result_image'>$echoImage</div><div id = 'result_text'>{$row['description']}<br><span id = 'imgNameText'>{$row['imgName']}</span><br><span id = 'timeText'>{$row['time']}</span></div></div>";
-                    // break;
+        if ($row['imgFileName'] == 'None') {
+            echo "<div id = 'result'><div id = 'result_image'>No Image</div><div id = 'result_text'>{$row['description']}<br><span id = 'imgNameText'>{$row['imgName']}</span><br><span id = 'timeText'>{$row['time']}</span></div></div>";
+        } else {
+            foreach ($files as $currentfile) {
+                if($currentfile != '.' && $currentfile != '..') {
+                    $tempName = pathinfo($currentfile, PATHINFO_FILENAME);
+                    if ($tempName == $row['imgFileName']) {
+                        $imageSrc = $imgDir.$currentfile;
+                        $echoImage = "<img src='{$imageSrc}' id='img'>";
+                        echo "<div id = 'result'><div id = 'result_image'>$echoImage</div><div id = 'result_text'>{$row['description']}<br><span id = 'imgNameText'>{$row['imgName']}</span><br><span id = 'timeText'>{$row['time']}</span></div></div>";
+                        // break;
+                    }
                 }
             }
         }

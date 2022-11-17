@@ -11,6 +11,14 @@
                 overflow: scroll;
             }
 
+            .radioLabel {
+                vertical-align: middle;
+            }
+
+            [type="radio"] {
+            vertical-align: middle;
+        }
+
         </style>
         <title>Chat</title>
     </head>
@@ -106,7 +114,7 @@
                 $current_result = mysqli_query ($db, "SELECT id, imgName FROM emotions;");
 
                 while ($row = mysqli_fetch_array($current_result)) {
-                    echo "<input type='radio' id='{$row['id']}' name='emotion' value='{$row['id']}'><label for='{$row['id']}'>{$row['imgName']}</label>";
+                    echo "<input type='radio' id='{$row['id']}' name='emotion' value='{$row['id']}'><label for='{$row['id']}'><span class = 'radioLabel'>{$row['imgName']}<span class = 'radioLabel'></label>";
                 }
             ?>
             <br><br>

@@ -2,9 +2,18 @@
 <head>
     <style>
         #img { width: 60px; }
+        
         .avatar { margin: 1em; }
+        
+        .radioLabel {
+            vertical-align: middle;
+        }
+        
+        [type="radio"] {
+            vertical-align: middle;
+        }
     </style>
-	<title>Add New Emoticons</title>
+    <title>Add New Emoticons</title>
 </head>
 
 <body>
@@ -46,9 +55,9 @@ CREATE TABLE 'emotions' (
     <div class = 'avatar'>
         <form action = 'add-emotion-to-db.php' method = 'post'>
             <label for='imgName'>Name: </label>
-            <input type='text' id='imgName' name='imgName'><br>
+            <input type='text' id='imgName' name='imgName'><br><br>
             <input type='radio' id='None' name='imgFileName' value='None'>
-            <label for='None'>No Image</label><br>
+            <label for='None'><span class = 'radioLabel'>No Image</span></label><br><br>
     ";
 
 
@@ -59,11 +68,11 @@ CREATE TABLE 'emotions' (
             $imgFileName = findName($currentImage);
             $imageSrc = $imgDir.$currentImage;
             echo "<input type='radio' id='$imgFileName' name='imgFileName' value='$imgFileName'>
-            <label for='$imgFileName'><img src='$imageSrc' id='img'></label><br>";
+            <label for='$imgFileName'><span class = 'radioLabel'><img src='$imageSrc' id='img'></span></label><br><br>";
         }
     }
 
-    echo "<br><br><input type='submit' id='submit' name='submit' value='Submit'></form></div>";
+    echo "<input type='submit' id='submit' name='submit' value='Submit'></form></div>";
 
 ?>
 </body>
