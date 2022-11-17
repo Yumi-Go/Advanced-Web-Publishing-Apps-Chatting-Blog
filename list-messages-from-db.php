@@ -45,7 +45,7 @@ CREATE TABLE 'emotions' (
 
 
     // $current_result = mysqli_query ($db, "SELECT * from messages;");
-    $current_result = mysqli_query ($db, "SELECT M.emotion_id, M.description, M.time, E.imgFileName, E.imgName from messages as M, emotions as E WHERE M.emotion_id = E.id;");
+    $current_result = mysqli_query ($db, "SELECT M.emotion_id, M.description, M.time, E.imgFileName, E.imgName FROM messages AS M, emotions AS E WHERE M.emotion_id = E.id ORDER BY M.time;");
 
     function extractName ($fileName) {
         $fName = pathinfo($fileName, PATHINFO_FILENAME);
@@ -95,8 +95,8 @@ CREATE TABLE 'emotions' (
 
 
 
-        echo "<div class = 'result_image'>".$echoImage."<br>Image should be placed here</div>";
-        echo "<div class = 'result'>".$row['time']."<br>".$row['description']."</div>";
+        // echo "<div class = 'result_image'>".$echoImage;
+        echo "<div class = 'result'>".$echoImage.$row['time']."<br>".$row['description']."</div>";
 
     }
 
