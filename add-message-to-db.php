@@ -55,9 +55,5 @@ CREATE TABLE 'emotions' (
 ?>
 
 
-
-<!-- <p>Enter <a href = "form.html">a new message</a></p>
-<p>View <a href = "display-messages.php">list of posts</a></p> -->
-
 </body>
 </html>

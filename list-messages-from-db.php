@@ -9,6 +9,48 @@
         #img {
             width: 60px;
         }
+
+        #result {
+            width: 100%;
+            height: 80px;
+            background: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 0.5px solid #bfbfbf;
+            padding: 10px;
+            /* position: relative; */
+        }
+
+        #result:hover {
+            background: pink;
+        }
+
+        #result_image {
+            /* flex: 1; */
+            width: 30%;
+            height: 100%;
+       }
+
+        #result_text {
+            /* flex: 1; */
+            width: 70%;
+            height: 100%;
+            font-family: helvetica, sans-serif;
+            /* border-top: 0.5px solid #bfbfbf; */
+            /* border-bottom: 0.5px solid #bfbfbf; */
+            /* padding: 10px; */
+            margin: 0;
+        }
+
+        #imgNameText {
+            color: #ff0066;
+        }
+
+        #timeText {
+            color: gray;
+        }
+
 	</style>
 </head>
 <body>
@@ -57,53 +99,22 @@ CREATE TABLE 'emotions' (
 
 
     while ($row = mysqli_fetch_array($current_result)) {
-        // $aa = implode(" ", $row);
-        // echo "<div class = 'check2'>".$aa." why........</div>";
-    
-        // for ($i = 0; $i < count($filesInDir); $i++) {            
-        //     // $tempName = pathinfo($array[$i], PATHINFO_FILENAME);
-        //     // echo "<div class = 'check2'>".$array[$i]." why........</div>";
-    //             $tempName = extractName($currentImage);
-    // if ($array[$i] == $row['M.emotion_id']) {
-        // $imageSrc = $imgDir.$array[$i];
-        // $echoImage = "<img src='$imageSrc'>";
-        // break;
 
         foreach ($files as $currentfile) {
             if($currentfile != '.' && $currentfile != '..') {
-                // $aa = implode(" ", $files);
-                // echo "<div class = 'check4'>".$aa." why........</div>";
-                // echo "<div class = 'check2'>$currentfile this is currentfile Name........</div>";
                 $tempName = pathinfo($currentfile, PATHINFO_FILENAME);
-                // echo "<div class = 'check3'>$tempName this is tempName........</div>";
-                // echo "<div class = 'check5'>$row['imgFileName'] this is E.imgFileName........</div>";
                 if ($tempName == $row['imgFileName']) {
                     $imageSrc = $imgDir.$currentfile;
-                    // echo "<div class = 'check6'>$imageSrc this is imageSrc........</div>"
                     $echoImage = "<img src='{$imageSrc}' id='img'>";
-                    break;
+                    echo "<div id = 'result'><div id = 'result_image'>$echoImage</div><div id = 'result_text'>{$row['description']}<br><span id = 'imgNameText'>{$row['imgName']}</span><br><span id = 'timeText'>{$row['time']}</span></div></div>";
+                    // break;
                 }
             }
         }
 
-
-
-
-
-
-
-
-
-
-        // echo "<div class = 'result_image'>".$echoImage;
-        echo "<div class = 'result'>".$echoImage.$row['time']."<br>".$row['description']."</div>";
-
+        // // echo "<div id = 'result'><div id = 'result_image'>".$echoImage."</div><div id = 'result_text'>".$row['time']."<br>".$row['description']."</div></div>";
+        // echo "<p><div id = 'result'><div id = 'result_image'>$echoImage</div><div id = 'result_text'>{$row['time']}<br>{$row['description']}</div></div></p>";
     }
-
-
-
-
-
 
 ?>
 

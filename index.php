@@ -3,23 +3,14 @@
     <head>
         <style>
             #output{
-                width: 300px;
+                width: 500px;
                 height: 300px;
+                padding: 0;
+                margin: 0;
                 border: 1px solid black;
                 overflow: scroll;
             }
 
-            .result {
-                font-family: helvetica, sans-serif;
-                background: #f2f2f2; 
-                border-top: 0.5px solid #bfbfbf;
-                border-bottom: 0.5px solid #bfbfbf;
-                padding: 5px;
-            }
-            
-            .result:hover {
-                background: pink;
-            }
         </style>
         <title>Chat</title>
     </head>

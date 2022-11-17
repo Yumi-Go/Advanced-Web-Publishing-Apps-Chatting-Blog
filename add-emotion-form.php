@@ -9,44 +9,7 @@
 
 <body>
 
-<!-- <script>
-    function addEmotion() {
-    
-        const imgFileNameNodeList = document.getElementsByName('imgFileName');
-        var imgName = document.getElementById("imgName").value;
-   
-        // var querystring = "?";
-        // var rbs = document.querySelectorAll('input[name="imgFileName"]');
-        // var imgFileName = null;
-        // for (var i = 0; i < rbs.length; i++) {
-        //     if (rbs[i].checked) {
-        //         imgFileName = rbs[i].value;
-        //         break;
-        //     }
-        // }
-        // querystring = "imgFileName=" + escape(imgFileName) + "&";
-
-        var querystring = "?";
-        imgFileNameNodeList.forEach((node) => {
-            if (node.checked) {
-                querystring += "imgFileName=" + escape(node.value) + "&";
-            }
-        });
-
-        querystring += "imgName="+escape(imgName);
-        location = "add-emotion-to-db.php"+querystring;
-    }
-
-    window.addEventListener('load', function(){
-        document.getElementById("submitButton").addEventListener("click", addEmotion);
-    });
-
-
-</script> -->
-
 <h1>Create New Emoticon</h1>
-
-    
 
 <!-- 
 CREATE TABLE 'messages' (
@@ -84,8 +47,8 @@ CREATE TABLE 'emotions' (
         <form action = 'add-emotion-to-db.php' method = 'post'>
             <label for='imgName'>Name: </label>
             <input type='text' id='imgName' name='imgName'><br>
-            <input type='radio' id='no_image' name='imgFileName' value='None'>
-            <label for='no_image'>No Image</label><br>
+            <input type='radio' id='None' name='imgFileName' value='None'>
+            <label for='None'>No Image</label><br>
     ";
 
 
@@ -95,7 +58,7 @@ CREATE TABLE 'emotions' (
         if (in_array($tempExt, $imageFormats)) {
             $imgFileName = findName($currentImage);
             $imageSrc = $imgDir.$currentImage;
-            echo "<p>for check: $currentImage</p><input type='radio' id='$imgFileName' name='imgFileName' value='$imgFileName'>
+            echo "<input type='radio' id='$imgFileName' name='imgFileName' value='$imgFileName'>
             <label for='$imgFileName'><img src='$imageSrc' id='img'></label><br>";
         }
     }
