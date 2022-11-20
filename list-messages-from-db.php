@@ -87,7 +87,10 @@ CREATE TABLE 'emotions' (
 
 
     // $current_result = mysqli_query ($db, "SELECT * from messages;");
-    $current_result = mysqli_query ($db, "SELECT M.emotion_id, M.description, M.time, E.imgFileName, E.imgName FROM messages AS M, emotions AS E WHERE M.emotion_id = E.id ORDER BY M.time;");
+    $current_result = mysqli_query ($db, 
+    "SELECT M.emotion_id, M.description, M.time, E.imgFileName, E.imgName 
+    FROM messages AS M, emotions AS E WHERE M.emotion_id = E.id 
+    ORDER BY M.time DESC LIMIT 20;");
 
     function extractName ($fileName) {
         $fName = pathinfo($fileName, PATHINFO_FILENAME);
