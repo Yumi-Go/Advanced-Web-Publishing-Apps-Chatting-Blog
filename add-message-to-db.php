@@ -1,6 +1,5 @@
 <html>
 <head>
-	<!-- <title> Message Board </title> -->
 </head>
 <body>
 <!-- 
@@ -26,9 +25,6 @@ CREATE TABLE 'emotions' (
     $db = mysqli_connect ('localhost', 'R00195941_db', 'LiftThanStand');
     mysqli_select_db ($db, 'R00195941_db');
     $charset_set = mysqli_set_charset ($db, 'utf8');
-
-    // $emotion = "";
-    // $description = "";
 
 
     if (isset($_POST['emotion'])) {

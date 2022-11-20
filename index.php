@@ -2,6 +2,12 @@
 <html>
     <head>
         <style>
+
+            #home_wrapper {
+                width: 100%;
+                text-align: center;
+            }
+
             #output{
                 width: 500px;
                 height: 300px;
@@ -9,7 +15,7 @@
                 margin: 0;
                 border: 1px solid black;
                 overflow: scroll;
-            }
+                display: inline-block;            }
 
             .radioLabel {
                 vertical-align: middle;
@@ -62,19 +68,6 @@
                 const emotionNodeList = document.getElementsByName('emotion');
                 var description = document.getElementById("description").value;
 
-                // var querystring = "";
-
-                // /* Check which emotion was selected in radio button */
-                // if (isset($emotion)) {
-                //     if ($emotion == "Angry") {
-                //         echo "emotion: Angry";
-                //     } else {
-                //         echo "emotion : Happy";
-                //     }
-                // } else {
-                //     echo "emotion not entered";
-                // }
-
                 var xhr = new XMLHttpRequest(); 
                 xhr.open ("GET", "list-messages-from-db.php");
 
@@ -101,38 +94,34 @@
 
 
         <p><a href = 'add-emotion-form.php'>Add New Emoticons</a></p>
-        <h1>Live Blog</h1>
-        <!-- <p>Choose Emotion</p> -->
-        <form action = "add-message-to-db.php" method = "POST">
-            <p>Choose Emotion:</p>
- 
-            <?php  
-                $db = mysqli_connect ('localhost', 'R00195941_db', 'LiftThanStand');
-                mysqli_select_db ($db, 'R00195941_db');
-                $charset_set = mysqli_set_charset ($db, 'utf8');
+        <div id = 'home_wrapper'>
+            <h1>Live Blog</h1>
+            <!-- <p>Choose Emotion</p> -->
+            <form action = "add-message-to-db.php" method = "POST">
+                <p>Choose Emotion:</p>
+    
+                <?php  
+                    $db = mysqli_connect ('localhost', 'R00195941_db', 'LiftThanStand');
+                    mysqli_select_db ($db, 'R00195941_db');
+                    $charset_set = mysqli_set_charset ($db, 'utf8');
 
-                $current_result = mysqli_query ($db, "SELECT id, imgName FROM emotions;");
+                    $current_result = mysqli_query ($db, "SELECT id, imgName FROM emotions;");
 
-                while ($row = mysqli_fetch_array($current_result)) {
-                    echo "<input type='radio' id='{$row['id']}' name='emotion' value='{$row['id']}'><label for='{$row['id']}'><span class = 'radioLabel'>{$row['imgName']}<span class = 'radioLabel'></label>";
-                }
-            ?>
-            <br><br>
-            <input type="text" id="description" name="description">
-            <input type="button" id="sendButton" name="sendButton" value="Send">
-        </form>
+                    while ($row = mysqli_fetch_array($current_result)) {
+                        echo "<input type='radio' id='{$row['id']}' name='emotion' value='{$row['id']}'><label for='{$row['id']}'><span class = 'radioLabel'>{$row['imgName']}<span class = 'radioLabel'></label>";
+                    }
+                ?>
+                <br><br>
+                <input type="text" id="description" name="description">
+                <input type="button" id="sendButton" name="sendButton" value="Send">
+            </form>
 
-        <h1>Results</h1>
+            <h1>Results</h1>
 
-        <div id = "output">
-            <div id = "output_img"></div>
-            <div id = "output_txt"></div>
+            <div id = "output">
+                <div id = "output_img"></div>
+                <div id = "output_txt"></div>
+            </div>
         </div>
-          
-          
-          
-          
-          
-          <!-- <script src="script.js"></script> -->
     </body>
 </html>

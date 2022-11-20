@@ -32,25 +32,13 @@ CREATE TABLE 'emotions' (
 
 
     if(isset($_POST['submit'])) {
-        // $imgName = urldecode($POST['imgName']);
-        // $imgFileName = urldecode($POST['imgFileName']);
-
-        // $imgName = isset($POST['imgName']);
-        // $imgFileName = isset($POST['imgFileName']);
 
         if (isset($_POST["imgName"])) {
             $imgName = $_POST["imgName"];
         }
-        // else {
-        // echo "imgName: Not Provided";
-        // }
         if (isset($_POST["imgFileName"])) {
             $imgFileName = $_POST["imgFileName"];
         }
-        // else {
-        //     echo "imgFileName: Not Provided"
-        // }
-
     }
 
     
@@ -69,12 +57,6 @@ CREATE TABLE 'emotions' (
     } else {
         echo "Error!";
     }
-
-    // while ($row = mysqli_fetch_array ($result)) {
-    //    echo "<div class = 'result'>{$row}</div>\n";
-    // }
-
-
 
 ?>
 

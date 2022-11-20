@@ -73,7 +73,7 @@ CREATE TABLE 'emotions' (
     }
 
     echo "<input type='submit' id='submit' name='submit' value='Submit'></form></div>";
-
+    echo "<p><a href = 'index.php'>Home</a></p>";
 ?>
 </body>
 </html>

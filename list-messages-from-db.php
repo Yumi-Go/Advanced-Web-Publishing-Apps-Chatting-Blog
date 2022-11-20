@@ -115,9 +115,6 @@ CREATE TABLE 'emotions' (
                 }
             }
         }
-
-        // // echo "<div id = 'result'><div id = 'result_image'>".$echoImage."</div><div id = 'result_text'>".$row['time']."<br>".$row['description']."</div></div>";
-        // echo "<p><div id = 'result'><div id = 'result_image'>$echoImage</div><div id = 'result_text'>{$row['time']}<br>{$row['description']}</div></div></p>";
     }
 
 ?>
